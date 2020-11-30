@@ -1,0 +1,15 @@
+{
+    "device":{
+        "name":"ESP32"
+    },
+    "wifi":{
+        "sta_ssid":"Anonymous",
+        "sta_pass":"fructose6126",
+        "access":"",
+        "ap_ssid":"ESP32_setting_server",
+        "ap_pass":""
+    },
+    "bluetooth":{
+        "pairing":"disable"
+    }
+}
