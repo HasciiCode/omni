@@ -1,0 +1,31 @@
+{    
+    "device":{
+        "name":"ESP32",
+        "mac_addr":"",
+        "user_name":"Hiromu Kato"
+    },
+
+    "bluetooth":{
+        "name":"ESP32_bluetooth",
+        "pairing":"able"
+    },
+    
+    "sta":{
+        "ssid":"",
+        "pass":"",
+        "ip_addr":"",
+        "connection":"true"
+    },
+
+    "ap":{
+        "ssid":"ESP32-debug201206",
+        "pass":"",
+        "ip":"",
+        "server_dns":"App"
+    },
+
+    "server":{
+        "domain_name":"App",
+        "url":""
+    }
+}

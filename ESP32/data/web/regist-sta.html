@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.document.onkeydown = function(event){
+            if (event.keyCode === 13){
+                var obj = document.activeElement;
+
+                try{
+                    obj.nextElementSibling.focus();
+                }catch(TypeError){
+                    const sta_ssid = document.getElementById("sta-ssid");
+                    const sta_pass = document.getElementById("sta-pass");
+                    const server_url = document.getElementById("server-url");
+
+                    var confirm_log = window.confirm("Device will restart to confirm settings");
+                    if(confirm_log){
+                        confirm_log = "reset=true";
+                    }else{
+                        confirm_log = "reset=false";
+                    }
+
+                    var post_data = [];
+                    post_data.push(sta_ssid);
+                    post_data.push(sta_pass);
+                    post_data.push(server_url);
+
+                    var post_format;
+                    
+                    for(var i=0;i<post_data.length;i++){
+                        var tmp = post_data[i].name + "=" + post_data[i].value;
+
+                        if(i === 0){
+                            post_format = tmp;
+                        }else{
+                            post_format = post_format + "&" + tmp;
+                        }
+                    }
+                    post_format = post_format + "&" +confirm_log;
+                    
+                    console.log(post_data);
+
+                    console.log("send data");
+                    xhr = new XMLHttpRequest();
+
+                    xhr.open("POST","sta_info.regist",true);
+                    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                    xhr.send(post_format);
+                }
+            }
+        }
+    </script>
+</head>
+<body> 
+    <h1>ESP32</h1>
+
+    <div id="app-interface">
+        <input type="text" id="sta-ssid" name="sta-ssid" placeholder="SSID">
+        <input type="password" id="sta-pass" name="sta-pass" placeholder="Password">
+        <input type="text" id="server-url" name="server-url" placeholder="Server URL">
+    </div>
+</body>
+</html>
